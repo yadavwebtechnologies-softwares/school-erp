@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admission - [Your School/Institution Name]</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/table.css" />
+    <link rel="stylesheet" href="css/filter.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-text">[Your School/Institution Name]</div>
+            <span class="session-badge">Session: 2026-27</span>
+        </div>
+
+        <div class="header-right">
+            <button class="btn-logout" id="logoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="app-nav">
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="students.html" class="nav-link">Students</a>
+        <a href="teachers.html" class="nav-link">Teachers</a>
+        <a href="fee-management.html" class="nav-link">Fee Management</a>
+        <a href="salary-management.html" class="nav-link">Salary Management</a>
+        <a href="admission.html" class="nav-link active">Admission</a>
+        <a href="receipts.html" class="nav-link">Receipts</a>
+        <a href="analytics.html" class="nav-link">Analytics</a>
+        <a href="settings.html" class="nav-link">Settings</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="app-main">
+
+        <h2 id="admissionHeading">Admission - Step 1 of 4: Personal Details</h2>
+
+        <!-- Progress -->
+        <div class="admission-progress">
+            <span class="step active" data-step="1">1. Personal</span>
+            <span class="step" data-step="2">2. Academic</span>
+            <span class="step" data-step="3">3. Documents</span>
+            <span class="step" data-step="4">4. Review</span>
+        </div>
+
+        <form id="admissionWizard" novalidate>
+
+            <!-- STEP 1: PERSONAL DETAILS -->
+            <div class="admission-form step-panel" data-panel="1">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter full name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" />
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="guardianName">Guardian Name</label>
+                    <input type="text" id="guardianName" placeholder="Guardian name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="text" id="contact" placeholder="Phone number" />
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-primary" type="button" data-next="2">
+                        Next Step
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- STEP 2: ACADEMIC DETAILS -->
+            <div class="admission-form step-panel" data-panel="2" hidden>
+
+                <div class="form-group">
+                    <label for="previousSchool">Previous School</label>
+                    <input type="text" id="previousSchool" placeholder="Enter previous school/institution name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="applyingClass">Class Applying For</label>
+                    <select id="applyingClass">
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="stream">Stream (if applicable)</label>
+                    <select id="stream">
+                        <option value="Science">Science</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Commerce">Commerce</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="previousMarks">Marks (Previous)</label>
+                    <input type="text" id="previousMarks" placeholder="Percentage / CGPA" />
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-secondary" type="button" data-prev="1">
+                        Previous
+                    </button>
+
+                    <button class="btn-primary" type="button" data-next="3">
+                        Next Step
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- STEP 3: DOCUMENT UPLOAD -->
+            <div class="admission-form step-panel" data-panel="3">
+
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" accept="image/*" />
+                </div>
+
+                <div class="form-group">
+                    <label for="birthCertificate">Birth Certificate</label>
+                    <input type="file" id="birthCertificate" accept=".pdf,.jpg" />
+                </div>
+
+                <div class="form-group">
+                    <label for="marksheet">Previous Marksheet</label>
+                    <input type="file" id="marksheet" accept=".pdf" />
+                </div>
+
+                <div class="form-group">
+                    <label for="transferCertificate">Transfer Certificate</label>
+                    <input type="file" id="transferCertificate" accept=".pdf" />
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-secondary" type="button" data-prev="2">
+                        Previous
+                    </button>
+
+                    <button class="btn-primary" type="button" data-next="4">
+                        Next Step
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- STEP 4: REVIEW -->
+            <div class="admission-form step-panel" data-panel="4" hidden>
+
+                <h3>Review Admission Details</h3>
+
+                <div class="review-box">
+
+                    <h4>Personal Details</h4>
+                    <p><strong>Name:</strong> <span id="reviewName">-</span></p>
+                    <p><strong>Date of Birth:</strong> <span id="reviewDob">-</span></p>
+                    <p><strong>Gender:</strong> <span id="reviewGender">-</span></p>
+                    <p><strong>Guardian:</strong> <span id="reviewGuardian">-</span></p>
+                    <p><strong>Contact:</strong> <span id="reviewContact">-</span></p>
+
+                    <hr />
+
+                    <h4>Academic Details</h4>
+                    <p><strong>Previous School:</strong> <span id="reviewSchool">-</span></p>
+                    <p><strong>Class:</strong> <span id="reviewClass">-</span></p>
+                    <p><strong>Stream:</strong> <span id="reviewStream">-</span></p>
+                    <p><strong>Previous Marks:</strong> <span id="reviewMarks">-</span></p>
+
+                    <hr />
+
+                    <h4>Uploaded Documents</h4>
+                    <p><strong>Photo:</strong> <span id="reviewPhoto">Not uploaded</span></p>
+                    <p><strong>Birth Certificate:</strong> <span id="reviewBirth">Not uploaded</span></p>
+                    <p><strong>Previous Marksheet:</strong> <span id="reviewMarksheet">Not uploaded</span></p>
+                    <p><strong>Transfer Certificate:</strong> <span id="reviewTC">Not uploaded</span></p>
+
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-secondary" type="button" data-prev="3">
+                        Previous
+                    </button>
+
+                    <button class="btn-primary" type="button" id="submitAdmission">
+                        Submit Admission
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>Powered by <strong>Yadav web technologies</strong></p>
+    </footer>
+
+    <!-- Existing Shared Script -->
+    <script src="js/script.js"></script>
+
+    <!-- Admission Demo Wizard -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        let currentStep = 1;
+
+        const headings = {
+            1: "Admission - Step 1 of 4: Personal Details",
+            2: "Admission - Step 2 of 4: Academic Details",
+            3: "Admission - Step 3 of 4: Document Upload",
+            4: "Admission - Step 4 of 4: Review & Submit"
+        };
+
+        const panels = document.querySelectorAll(".step-panel");
+        const progressSteps = document.querySelectorAll(".admission-progress .step");
+
+        function showStep(step) {
+
+            currentStep = step;
+
+            panels.forEach(function (panel) {
+                panel.hidden = Number(panel.dataset.panel) !== step;
+            });
+
+            progressSteps.forEach(function (item) {
+
+                const number = Number(item.dataset.step);
+
+                item.classList.remove("active", "done");
+
+                if (number === step) {
+                    item.classList.add("active");
+                } else if (number < step) {
+                    item.classList.add("done");
+                }
+
+            });
+
+            document.getElementById("admissionHeading").textContent =
+                headings[step];
+
+            updateReview();
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function getValue(id) {
+            const element = document.getElementById(id);
+            return element && element.value.trim() ? element.value.trim() : "-";
+        }
+
+        function getFileName(id) {
+            const element = document.getElementById(id);
+
+            if (element && element.files.length > 0) {
+                return element.files[0].name;
+            }
+
+            return "Not uploaded";
+        }
+
+        function updateReview() {
+
+            const values = {
+                reviewName: getValue("fullName"),
+                reviewDob: getValue("dob"),
+                reviewGender: getValue("gender"),
+                reviewGuardian: getValue("guardianName"),
+                reviewContact: getValue("contact"),
+                reviewSchool: getValue("previousSchool"),
+                reviewClass: getValue("applyingClass"),
+                reviewStream: getValue("stream"),
+                reviewMarks: getValue("previousMarks"),
+                reviewPhoto: getFileName("photo"),
+                reviewBirth: getFileName("birthCertificate"),
+                reviewMarksheet: getFileName("marksheet"),
+                reviewTC: getFileName("transferCertificate")
+            };
+
+            Object.entries(values).forEach(function ([id, value]) {
+                document.getElementById(id).textContent = value;
+            });
+        }
+
+        // Next Step
+        document.querySelectorAll("[data-next]").forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const nextStep = Number(button.dataset.next);
+
+                if (nextStep > currentStep) {
+                    showStep(nextStep);
+                }
+
+            });
+
+        });
+
+        // Previous Step
+        document.querySelectorAll("[data-prev]").forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const previousStep = Number(button.dataset.prev);
+
+                showStep(previousStep);
+
+            });
+
+        });
+
+        // Update review when document selections change
+        document.querySelectorAll('input[type="file"]').forEach(function (input) {
+
+            input.addEventListener("change", updateReview);
+
+        });
+
+        // Demo Submission
+        document.getElementById("submitAdmission").addEventListener("click", function () {
+
+            updateReview();
+
+            alert("Admission submitted successfully (Demo Only). No data was sent to a server.");
+
+        });
+
+        // Initial Step
+        showStep(1);
+
+    });
+    </script>
+
+</body>
+</html>
